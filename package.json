@@ -1,0 +1,34 @@
+{
+  "name": "evented-array",
+  "version": "0.0.0",
+  "description": "Array emitting mutation events",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "muevents": "~0.1.0"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "mocha": "~1.21.4"
+  },
+  "scripts": {
+    "test": "mocha --harmony"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dfcreative/evented-array.git"
+  },
+  "keywords": [
+    "array",
+    "events",
+    "event-emitter"
+  ],
+  "author": "dfcreative",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dfcreative/evented-array/issues"
+  },
+  "homepage": "https://github.com/dfcreative/evented-array"
+}
