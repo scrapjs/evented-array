@@ -1,45 +1,46 @@
-# Eventful-array
+# Evented array
 
-Just tiny wrapper to make any array eventful.
+Just tiny wrapper to make any array emit mutation events.
 
-Default events are:
-* push
-* pop
-* shift
-* unshift
-* changed
+Full list of mutator methods can be found on the MDN: [mutator methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Mutator_methods).
 
 
 ## Use
 
-`$ npm install eventful-array`
+Install:
 
+`$ npm install evented-array`
 
 ```js
-var eArray = require('eventful-array');
-var emitter = require('emitter'); //any event emitter handler, like [muevents]() etc
+var EventedArray = require('evented-array');
 ```
+
 
 Wrap existing array:
 
 ```js
 var a = [];
-var b = eArray(a);
+var b = EventedArray(a);
 
 //listen to events
 emitter.on(a, 'changed');
-
 ```
 
-Create new array:
+Create new array (the way Array is created):
 
 ```js
-var a = new EventfulArray([1,2,3]);
+var a = new EventedArray(1,2,3);
 ```
 
 
+_EventedArray_ is used by [mod](https://github.com/dfcreative/mod) to make properties raise change events.
 
-EventedArray is used by [mod]() to wrap any array property and raise change events.
+For subclassing an Array used the [Irakli Gozalishvili’s method](https://gist.github.com/Gozala/666251).
+
+
+## TODO
+
+* testling table
 
 
 ## License

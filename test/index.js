@@ -52,4 +52,6 @@ describe('EventedArray', function(){
 		a.unshift(1);
 		assert.deepEqual(a.valueOf(), [1,1,2,3,4,5]);
 	});
+
+	it('Length behaviour is as of the Array');
 })
