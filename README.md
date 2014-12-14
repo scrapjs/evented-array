@@ -1,4 +1,5 @@
-# Evented array
+# Evented array [![Build Status](https://travis-ci.org/dfcreative/evented-array.svg?branch=master)](https://travis-ci.org/dfcreative/evented-array) [![Code Climate](https://codeclimate.com/github/dfcreative/evented-array/badges/gpa.svg)](https://codeclimate.com/github/dfcreative/evented-array) <a href="UNLICENSE"><img src="http://upload.wikimedia.org/wikipedia/commons/6/62/PD-icon.svg" width="20"/></a>
+
 
 Just tiny wrapper to make any array emit mutation events.
 
@@ -38,11 +39,5 @@ _EventedArray_ is used by [mod](https://github.com/dfcreative/mod) to make prope
 For subclassing an Array used the [Irakli Gozalishvili’s method](https://gist.github.com/Gozala/666251).
 
 
-## TODO
 
-* testling table
-
-
-## License
-
-MIT
+[![NPM](https://nodei.co/npm/evented-array.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/evented-array/)

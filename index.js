@@ -5,7 +5,7 @@ module.exports = EventedArray;
 
 
 /** event emitter, can be replaced with more concise one */
-var evt = require('muevents');
+var emit = require('emmy/emit');
 
 
 /** Callback name to use as a changed notifier */
@@ -71,9 +71,9 @@ for (var i = mutatorMethods.length, meth; i--;){
  */
 function getWrapper (methName) {
 	return function(){
-		evt.emit(this, methName);
+		emit(this, methName);
 		var res = arrProto[methName].apply(this, arguments);
-		evt.emit(this, changeCallbackName);
+		emit(this, changeCallbackName);
 		return res;
 	};
 }
