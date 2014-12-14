@@ -33,9 +33,6 @@ Create new array (the way Array is created):
 var a = new EventedArray(1,2,3);
 ```
 
-
-_EventedArray_ is used by [mod](https://github.com/dfcreative/mod) to make array properties emit `changed` event.
-
 To subclass the Array used the [Irakli Gozalishvili’s method](https://gist.github.com/Gozala/666251).
 
 
