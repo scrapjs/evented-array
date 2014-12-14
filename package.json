@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "files": [
+    "index.js"
+  ],
   "dependencies": {
     "emmy": ">=1.0.0"
   },
