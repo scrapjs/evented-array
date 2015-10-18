@@ -4,7 +4,7 @@
 module.exports = EventedArray;
 
 
-/** event emitter, can be replaced with more concise one */
+/** Event emitter, can be replaced with more suitable one */
 var emit = require('emmy/emit');
 
 
@@ -19,8 +19,6 @@ var changeCallbackName = 'changed';
  */
 var mutatorMethods = 'copyWithin fill pop push reverse shift sort splice unshift'.split(' ');
 
-
-var arrProto = Array.prototype;
 
 
 /**
@@ -37,20 +35,29 @@ function EventedArray(src){
 	this.push.apply(this, arguments);
 }
 
-//extend proto from the Array
-var proto = EventedArray.prototype = Object.create(arrProto, {
+
+/**
+ * Inherit from Array
+ */
+EventedArray.prototype = Object.create(Array.prototype, {
 	constructor: {
 		value: EventedArray
 	}
 });
 
-//fix JSON representation
-proto.toJSON = function(){
+
+/**
+ * Fix JSON representation
+ */
+EventedArray.prototype.toJSON = function(){
 	return this.slice.call(this);
 };
 
-//return array instance instead of evented array
-proto.valueOf = function(){
+
+/**
+ * Return array instance instead of evented array
+ */
+EventedArray.prototype.valueOf = function(){
 	return this.slice.call(this);
 };
 
@@ -58,7 +65,9 @@ proto.valueOf = function(){
 //For every mutator method - create event wrapper on the EventedArray prototype
 for (var i = mutatorMethods.length, meth; i--;){
 	meth = mutatorMethods[i];
-	if (arrProto[meth])	proto[meth] = getWrapper(meth);
+	if (Array.prototype[meth])	{
+		EventedArray.prototype[meth] = getWrapper(meth);
+	}
 }
 
 
@@ -70,9 +79,9 @@ for (var i = mutatorMethods.length, meth; i--;){
  * @return {Function} Method wrapper
  */
 function getWrapper (methName) {
-	return function(){
+	return function () {
 		emit(this, methName);
-		var res = arrProto[methName].apply(this, arguments);
+		var res = Array.prototype[methName].apply(this, arguments);
 		emit(this, changeCallbackName);
 		return res;
 	};

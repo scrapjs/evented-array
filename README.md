@@ -3,38 +3,36 @@
 
 Just tiny wrapper to make any array emit mutator events.
 
-Full list of mutator methods can be found on the MDN: [mutator methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Mutator_methods).
-
-
 ## Use
-
-Install:
 
 `$ npm install evented-array`
 
 ```js
 var EventedArray = require('evented-array');
-```
 
-
-Wrap existing array:
-
-```js
-var a = [];
-var b = EventedArray(a);
-
-//listen to events
-emitter.on(a, 'changed');
-```
-
-Create new array (the way Array is created):
-
-```js
 var a = new EventedArray(1,2,3);
+var b = EventedArray([]);
+
+a.on('shift', function () { console.log('Shifted'); });
+b.on('changed', function () { console.log('Changed'); });
+
+a.shift();
+b.push(3);
 ```
 
-To subclass the Array used the [Irakli Gozalishvili’s method](https://gist.github.com/Gozala/666251).
+Full list of mutator methods can be found in MDN [mutator methods list](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Mutator_methods):
 
+* `copyWithin`
+* `fill`
+* `pop`
+* `push`
+* `reverse`
+* `shift`
+* `sort`
+* `splice`
+* `unshift`
+
+To subclass Array is used the [Irakli Gozalishvili’s method](https://gist.github.com/Gozala/666251).
 
 
 [![NPM](https://nodei.co/npm/evented-array.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/evented-array/)
