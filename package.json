@@ -13,8 +13,9 @@
     "emmy": ">=1.0.0"
   },
   "devDependencies": {
-    "chai": "~1.9.1",
-    "mocha": "~1.21.4"
+    "chai": "^1.9.1",
+    "mocha": "^2.3.4",
+    "performance-now": "^0.2.0"
   },
   "scripts": {
     "test": "mocha --harmony"

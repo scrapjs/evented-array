@@ -27,12 +27,15 @@ var mutatorMethods = 'copyWithin fill pop push reverse shift sort splice unshift
  * Subclassing is taken from [here]{@link https://gist.github.com/Gozala/666251}
  */
 function EventedArray(src){
-	//upgrade array passed up to EventedArray
-	if (src instanceof Array) {
-		return EventedArray.apply(this, src);
-	}
+	if (!(this instanceof EventedArray)) return new EventedArray(src);
 
-	this.push.apply(this, arguments);
+	//upgrade passed Array to EventedArray
+	if (src instanceof Array) {
+		this.push.apply(this, src);
+	}
+	else if (typeof src === 'number') {
+		this.length = src;
+	}
 }
 
 
