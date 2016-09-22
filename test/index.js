@@ -1,6 +1,5 @@
 var EventedArray = require('../index');
 var assert = require('chai').assert;
-var evt = require('emmy');
 var now = require('performance-now');
 
 describe('EventedArray', function(){
@@ -17,7 +16,7 @@ describe('EventedArray', function(){
 
 		assert.deepEqual(JSON.parse(JSON.stringify(a)), [1,2,3]);
 
-		evt.on(a, 'changed', function(){
+		a.on('changed', function(){
 			i++;
 			assert.equal(this, a);
 		});
@@ -32,7 +31,7 @@ describe('EventedArray', function(){
 		var i = 0;
 		var a = [1,2,3];
 		var b = new EventedArray(a);
-		evt.on(b, 'changed', function(){
+		b.on('changed', function(){
 			i++;
 			assert.equal(this, b);
 		});

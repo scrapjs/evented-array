@@ -4,8 +4,10 @@
 module.exports = EventedArray;
 
 
+
 /** Event emitter, can be replaced with more suitable one */
-var emit = require('emmy/emit');
+var Emitter = require('events').EventEmitter;
+var extend = require('xtend/mutable');
 
 
 /** Callback name to use as a changed notifier */
@@ -29,6 +31,8 @@ var mutatorMethods = 'copyWithin fill pop push reverse shift sort splice unshift
 function EventedArray(src){
 	if (!(this instanceof EventedArray)) return new EventedArray(src);
 
+	Emitter.call(this);
+
 	//upgrade passed Array to EventedArray
 	if (src instanceof Array) {
 		this.push.apply(this, src);
@@ -47,6 +51,7 @@ EventedArray.prototype = Object.create(Array.prototype, {
 		value: EventedArray
 	}
 });
+extend(EventedArray.prototype, Emitter.prototype);
 
 
 /**
@@ -83,9 +88,9 @@ for (var i = mutatorMethods.length, meth; i--;){
  */
 function getWrapper (methName) {
 	return function () {
-		emit(this, methName);
+		this.emit(methName);
 		var res = Array.prototype[methName].apply(this, arguments);
-		emit(this, changeCallbackName);
+		this.emit(changeCallbackName);
 		return res;
 	};
 }

@@ -10,7 +10,7 @@
     "index.js"
   ],
   "dependencies": {
-    "emmy": ">=1.0.0"
+    "xtend": "^4.0.1"
   },
   "devDependencies": {
     "chai": "^1.9.1",
